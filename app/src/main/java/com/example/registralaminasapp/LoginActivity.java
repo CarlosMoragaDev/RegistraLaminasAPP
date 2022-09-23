@@ -16,7 +16,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void nextPageRes(View vista){
-        Toast toast = Toast.makeText(this, "Pronto disponible", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(this, "Trabajando", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.START, 90,0);
         toast.show();
     }
