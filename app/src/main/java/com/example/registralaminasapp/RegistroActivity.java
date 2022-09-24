@@ -19,7 +19,7 @@ public class RegistroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro_layout);
 
-
+        /*
         //notificacion
         mostrarNotificacion = (Button) findViewById(R.id.inicioSesion);
         mostrarNotificacion.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +44,7 @@ public class RegistroActivity extends AppCompatActivity {
                 mNotifyMgr.notify(1, mBuilder.build());
 
             }
-        });
+        });*/
 
 
     }
