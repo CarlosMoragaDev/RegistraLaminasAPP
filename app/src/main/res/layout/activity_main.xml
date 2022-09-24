@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bienvenido a Registra Lamina"
+            android:text="Bienvenido a Registra Lamina APP"
             android:textAlignment="center"
             android:textSize="25sp"
             android:textColor="@color/black"
