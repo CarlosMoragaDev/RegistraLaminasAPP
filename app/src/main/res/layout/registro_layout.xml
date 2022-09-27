@@ -101,14 +101,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/inicioSesion"
+            android:id="@+id/btnRegistrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Registrar"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
             android:backgroundTint="@color/design_default_color_secondary_variant"
-            android:onClick="nextPage2" />
+            android:onClick="message" />
 
     </LinearLayout>
 
