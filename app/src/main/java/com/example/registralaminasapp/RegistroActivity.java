@@ -9,6 +9,9 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
@@ -17,95 +20,45 @@ import java.util.Random;
 
 public class RegistroActivity extends AppCompatActivity {
 
-    //Button mostrarNotificacion;
+    private Button mostrarNotificacion;
+    private Button btnGuardarReg;
+    private EditText usuario;
+    private EditText emailUsuario;
+    private EditText comunaUsuario;
+    private EditText passUsuario;
+    private EditText confirmarPass;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro_layout);
 
+        usuario = (EditText) findViewById(R.id.usuario);
+        emailUsuario = (EditText) findViewById(R.id.emailUsuario);
+        comunaUsuario = (EditText) findViewById(R.id.comunaUsuario);
+        passUsuario = (EditText) findViewById(R.id.passUsuario);
+        confirmarPass = (EditText) findViewById(R.id.confirmarPass);
+        btnGuardarReg = (Button) findViewById(R.id.btnGuardarReg);
 
-
-        /*
-        //notificacion
-        mostrarNotificacion = (Button) findViewById(R.id.btnRegistrar);
-        mostrarNotificacion.setOnClickListener(new View.OnClickListener() {
+        btnGuardarReg.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View vista) {
-                NotificationCompat.Builder mBuilder;
-                NotificationManager mNotifyMgr = (NotificationManager)
-                        getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
+            public void onClick(View view) {
+                if (!usuario.getText().toString().isEmpty() &&
+                        !emailUsuario.getText().toString().isEmpty()
+                        && !comunaUsuario.getText().toString().isEmpty()
+                        && !passUsuario.getText().toString().isEmpty()
+                        && !confirmarPass.getText().toString().isEmpty()) {
+                    Intent intent = new Intent(RegistroActivity.this, MainActivity.class);
+                    intent.putExtra("nombre", usuario.getText().toString());
+                    startActivity(intent);
 
-                int icono = R.mipmap.ic_launcher;
-                Intent i = new Intent(RegistroActivity.this, MainActivity.class);
-                PendingIntent pendingIntent = PendingIntent.getActivity(RegistroActivity.this, 0, i,0);
-                startActivity(i);
-                mBuilder = new NotificationCompat.Builder(getApplicationContext())
-                        .setContentIntent(pendingIntent)
-                        .setSmallIcon(icono)
-                        .setContentTitle("Aviso")
-                        .setContentText("Nuevo usuario registrado")
-                        .setVibrate(new long[]{100,250,100,500})
-                        .setAutoCancel(true);
-
-                mNotifyMgr.notify(1, mBuilder.build());
-
+                } else {
+                    Toast.makeText(RegistroActivity.this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
+                }
             }
-        });*/
-    }
 
-    public void message(View view){
-        generateNotification();
-    }
-
-    private void generateNotification(){
-        NotificationManager notificationManager = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel notificationChannel = new NotificationChannel("NOTIFICATION_URGENT _ID", "My Notifications", NotificationManager.IMPORTANCE_HIGH);
-            notificationChannel.setDescription("Channel description");
-            notificationChannel.enableLights(true);
-            notificationChannel.setVibrationPattern(new long[]{0, 1000, 500, 1000});
-            notificationChannel.enableVibration(true);
-
-            notificationChannel.setGroup("id");
-            notificationChannel.setShowBadge(true);
-            assert notificationManager != null;
-            notificationManager.createNotificationChannel(notificationChannel);
-        }
-
-
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, "NOTIFICATION_URGENT _ID");
-
-        notificationBuilder.setAutoCancel(true)
-                .setDefaults(Notification.DEFAULT_ALL)
-                .setWhen(System.currentTimeMillis())
-                .setSmallIcon(R.drawable.ic_launcher_background)
-                .setTicker("Mensajes")
-                .setContentTitle("Notificación")
-                .setContentIntent(onClick())
-                .setContentText("Nuevo usuario registrado")
-                .setContentInfo("New");
-
-
-        Random random = new Random();
-        int m = random.nextInt(9999 - 1000) + 1000;
-        assert notificationManager != null;
-        notificationManager.notify(/*notification id*/m, notificationBuilder.build());
-
-    }
-    public PendingIntent  onClick(){
-        Intent notificationIntent = new Intent(this,
-                MainActivity.class);
-        startActivity(notificationIntent);
-        notificationIntent.putExtra("age", "13");
-        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
-                | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        return PendingIntent.getActivity(this, 0,
-                notificationIntent, 0);
+        });
 
     }
 
