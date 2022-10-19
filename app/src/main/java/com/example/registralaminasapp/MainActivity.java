@@ -8,11 +8,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity{
 
-
-
+    private Bundle bundle;
+    private TextView saludoInicio;
 
 
     @Override
@@ -20,16 +21,24 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        saludoInicio = (TextView) findViewById(R.id.saludoInicio);
+
+        bundle = getIntent().getExtras();
+
+        String saludo = bundle.getString("nombre");
+
+        saludoInicio.append(" " + saludo);
+
 
     }
-    public void nextPage1(View vista){
+    public void nextPageAlbum(View vista){
         Intent nextPage = new Intent(this, AlbumActivity.class);
         startActivity(nextPage);
 
     }
 
 
-    public void nextPage2(View vista){
+    public void nextPageEvaluacion(View vista){
         Intent nextPage = new Intent(this, EvaluaActivity.class);
         startActivity(nextPage);
 

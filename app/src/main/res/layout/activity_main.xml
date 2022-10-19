@@ -15,15 +15,17 @@
         android:padding="10dp">
 
         <TextView
+            android:id="@+id/saludoInicio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bienvenido a Registra Lamina APP"
+            android:text="@string/saludo"
             android:textAlignment="center"
             android:textSize="25sp"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:paddingTop="25dp"
-            android:paddingBottom="25dp"/>
+            android:paddingBottom="25dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/imgInicio"
@@ -58,7 +60,7 @@
             android:text="Ver mis albumnes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="nextPage1">
+            android:onClick="nextPageAlbum">
 
         </Button>
 
@@ -67,7 +69,7 @@
             android:text="Evalúa la aplicación"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="nextPage2">
+            android:onClick="nextPageEvaluacion">
 
         </Button>
 

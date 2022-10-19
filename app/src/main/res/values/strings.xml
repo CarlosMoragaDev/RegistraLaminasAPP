@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RegistraLaminasAPP</string>
+
+    <string name="saludo">Bienvenido</string>
 </resources>
