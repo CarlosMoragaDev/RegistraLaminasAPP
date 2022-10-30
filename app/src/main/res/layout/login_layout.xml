@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".LoginActivity"
-        android:padding="25dp"
+        android:padding="15dp"
         android:orientation="vertical"
         android:background="@color/bgSecondary"
         android:layout_alignEnd="@id/btnRecuperar">
@@ -41,17 +41,11 @@
             android:layout_height="wrap_content"
             android:text="Inicia sesión para continuar"
             android:textSize="24sp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="vertical"
-            android:layout_below="@id/continuarLabel">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/continuarLabel"
                 android:id="@+id/emailUsuario"
                 android:hint="Email"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -65,16 +59,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"/>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_below="@id/emailUsuario"
                 android:id="@+id/contraseniaTextField"
                 android:hint="Contraseña"
                 android:transitionName="passwordTrans"
                 app:passwordToggleEnabled="true"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-                <androidx.appcompat.widget.AppCompatEditText
+                <EditText
                     android:id="@+id/passUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -82,83 +73,81 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/btnInicio"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/contraseniaTextField"
                 android:text="Iniciar Sesión"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:backgroundTint="@color/design_default_color_secondary_variant"
                 android:onClick="nextPage2"/>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btnHuella"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_baseline_fingerprint_24"
                 android:layout_below="@id/contraseniaTextField"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="0dp"
-                android:gravity="center">
+                android:layout_toRightOf="@+id/btnInicio"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginBottom="12dp"
+                android:backgroundTint="@color/design_default_color_secondary_variant"
+                />
 
                 <TextView
                     android:id="@+id/nuevoUsuario"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="¿Eres nuevo? Registrate"
+                    android:layout_below="@id/btnInicio"
+                    android:layout_marginTop="20dp"
+                    android:text="¿Eres nuevo? Regístrate"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="italic" />
 
-                <com.google.android.material.button.MaterialButton
+                <Button
                     android:id="@+id/inicioSesion1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="103dp"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/btnInicio"
+                    android:layout_toRightOf="@+id/nuevoUsuario"
                     android:layout_marginTop="12dp"
+                    android:layout_marginLeft="32dp"
                     android:layout_marginBottom="12dp"
                     android:backgroundTint="@color/design_default_color_secondary_variant"
                     android:onClick="nextPage"
-                    android:textSize="10sp"
+                    android:textSize="9sp"
                     android:text="Registrar" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/nuevoUsuario"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="0dp"
-                android:gravity="center">
 
                 <TextView
                     android:id="@+id/olvidastePass"
-                    android:padding="8dp"
                     android:layout_width="220dp"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/nuevoUsuario"
+                    android:layout_marginTop="30dp"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     android:textColor="@color/black"
-                    android:layout_gravity="center"
                     android:text="¿Olvidaste tu contraseña?"/>
 
-                <com.google.android.material.button.MaterialButton
+                <Button
                     android:id="@+id/btnRecuperar"
-                    android:layout_width="match_parent"
+                    android:layout_width="103dp"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/nuevoUsuario"
+                    android:layout_toRightOf="@+id/olvidastePass"
                     android:text="Recuperar"
-                    android:layout_marginTop="10dp"
-                    android:textSize="8sp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginBottom="12dp"
+                    android:textSize="9sp"
                     android:backgroundTint="@color/design_default_color_secondary_variant"
                     android:onClick="nextPageRes"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
 
     </RelativeLayout>
 
