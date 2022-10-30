@@ -1,2 +1,2 @@
 # RegistraLaminasAPP
-Version 1.0 de la apliación
+Version 1.1 de la aplicación
