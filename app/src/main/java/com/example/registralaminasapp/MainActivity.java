@@ -116,6 +116,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    public void nextPageMapa(View vista){
+        Intent nextPage = new Intent(this, MapaActivity.class);
+        startActivity(nextPage);
+
+    }
+
 
 
 

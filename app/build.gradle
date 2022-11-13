@@ -39,4 +39,7 @@ dependencies {
 
     //huella
     implementation "androidx.biometric:biometric:1.1.0"
+
+    //mapbox
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.7.1'
 }

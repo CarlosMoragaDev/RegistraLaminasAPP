@@ -73,6 +73,15 @@
         </Button>
 
         <Button
+            android:layout_marginTop="15dp"
+            android:text="ir a mapa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="nextPageMapa">
+
+        </Button>
+
+        <Button
             android:layout_marginTop="5dp"
             android:text="Evalúa la aplicación"
             android:layout_width="match_parent"
