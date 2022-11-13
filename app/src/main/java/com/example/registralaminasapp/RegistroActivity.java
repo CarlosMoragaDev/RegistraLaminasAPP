@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,13 +21,9 @@ import java.util.Random;
 
 public class RegistroActivity extends AppCompatActivity {
 
-    private Button mostrarNotificacion;
-    private Button btnGuardarReg;
-    private EditText usuario;
-    private EditText emailUsuario;
-    private EditText comunaUsuario;
-    private EditText passUsuario;
-    private EditText confirmarPass;
+    private Button btnregistrar;
+    private EditText username, password, repassword;
+    DBHelper DB;
 
 
     @Override
@@ -34,30 +31,41 @@ public class RegistroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro_layout);
 
-        usuario = (EditText) findViewById(R.id.usuario);
-        emailUsuario = (EditText) findViewById(R.id.emailUsuario);
-        comunaUsuario = (EditText) findViewById(R.id.comunaUsuario);
-        passUsuario = (EditText) findViewById(R.id.passUsuario);
-        confirmarPass = (EditText) findViewById(R.id.confirmarPass);
-        btnGuardarReg = (Button) findViewById(R.id.btnGuardarReg);
+        username = (EditText) findViewById(R.id.username);
+        password = (EditText) findViewById(R.id.password);
+        repassword = (EditText) findViewById(R.id.repassword);
+        btnregistrar = (Button) findViewById(R.id.btnregistrar);
+        DB= new DBHelper(this);
 
-        btnGuardarReg.setOnClickListener(new View.OnClickListener() {
+        btnregistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!usuario.getText().toString().isEmpty() &&
-                        !emailUsuario.getText().toString().isEmpty()
-                        && !comunaUsuario.getText().toString().isEmpty()
-                        && !passUsuario.getText().toString().isEmpty()
-                        && !confirmarPass.getText().toString().isEmpty()) {
-                    Intent intent = new Intent(RegistroActivity.this, MainActivity.class);
-                    intent.putExtra("nombre", usuario.getText().toString());
-                    startActivity(intent);
+                String user= username.getText().toString();
+                String pass= password.getText().toString();
+                String repass= repassword.getText().toString();
 
-                } else {
-                    Toast.makeText(RegistroActivity.this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
+                if(TextUtils.isEmpty(user) ||TextUtils.isEmpty(pass) || TextUtils.isEmpty(repass))
+                    Toast.makeText(RegistroActivity.this, "Llenar todos los campos",Toast.LENGTH_SHORT).show();
+                else{
+                    if(pass.equals(repass)){
+                        Boolean checkuser = DB.checkusername(user);
+                        if(checkuser==false){
+                            Boolean insert = DB.insertData(user,pass);
+                            if(insert==true){
+                                Toast.makeText(RegistroActivity.this, "Registro exitoso",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                startActivity(intent);
+                            }else{
+                                Toast.makeText(RegistroActivity.this, "Fallo el registro",Toast.LENGTH_SHORT).show();
+                            }
+                        }else{
+                            Toast.makeText(RegistroActivity.this, "Usuario ya registrado",Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        Toast.makeText(RegistroActivity.this, "Contraseña no coincide",Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
-
         });
 
     }

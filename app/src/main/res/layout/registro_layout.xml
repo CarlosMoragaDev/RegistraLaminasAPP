@@ -42,38 +42,12 @@
             android:layout_below="@id/bienvenidoLabel"
             android:hint="Usuario">
             <EditText
-                android:id="@+id/usuario"
+                android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/emailTxtField"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="Email">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/emailUsuario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/comunaTextField"
-            android:hint="Comuna"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:textColorHint="@color/black">
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/comunaUsuario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -83,8 +57,8 @@
             android:transitionName="passwordTrans"
             app:passwordToggleEnabled="true"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/passUsuario"
+            <EditText
+                android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"/>
@@ -98,15 +72,15 @@
             android:hint="Confirmar contraseña"
             app:passwordToggleEnabled="true"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/confirmarPass"
+            <EditText
+                android:id="@+id/repassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnGuardarReg"
+            android:id="@+id/btnregistrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Registrar"

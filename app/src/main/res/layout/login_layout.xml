@@ -42,112 +42,112 @@
             android:text="Inicia sesión para continuar"
             android:textSize="24sp"/>
 
-            <com.google.android.material.textfield.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/continuarLabel"
+            android:id="@+id/emailUsuario"
+            android:hint="Usuario"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emailUsuario"
+            android:id="@+id/contraseniaTextField"
+            android:hint="Contraseña"
+            android:transitionName="passwordTrans"
+            app:passwordToggleEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            <EditText
+                android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/continuarLabel"
-                android:id="@+id/emailUsuario"
-                android:hint="Email"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-                <EditText
-                    android:id="@+id/emailUser"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:inputType="textPassword"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/emailUsuario"
-                android:id="@+id/contraseniaTextField"
-                android:hint="Contraseña"
-                android:transitionName="passwordTrans"
-                app:passwordToggleEnabled="true"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-                <EditText
-                    android:id="@+id/passUser"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"/>
+        <Button
+            android:id="@+id/btnsignin"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/contraseniaTextField"
+            android:text="Iniciar Sesión"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/design_default_color_secondary_variant"
+            android:clickable="true"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+        <Button
+            android:id="@+id/btnHuella"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_fingerprint_24"
+            android:layout_below="@id/contraseniaTextField"
+            android:layout_toRightOf="@+id/btnsignin"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/design_default_color_secondary_variant"
+            />
 
-            <Button
-                android:id="@+id/btnInicio"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/contraseniaTextField"
-                android:text="Iniciar Sesión"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:backgroundTint="@color/design_default_color_secondary_variant"
-                android:onClick="nextPage2"/>
+        <TextView
+            android:id="@+id/nuevoUsuario"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnsignin"
+            android:layout_marginTop="20dp"
+            android:text="¿Eres nuevo? Regístrate"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="italic" />
 
-            <Button
-                android:id="@+id/btnHuella"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_baseline_fingerprint_24"
-                android:layout_below="@id/contraseniaTextField"
-                android:layout_toRightOf="@+id/btnInicio"
-                android:layout_marginTop="12dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="32dp"
-                android:layout_marginBottom="12dp"
-                android:backgroundTint="@color/design_default_color_secondary_variant"
-                />
+        <Button
+            android:id="@+id/inicioSesion1"
+            android:layout_width="103dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnsignin"
+            android:layout_toRightOf="@+id/nuevoUsuario"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/design_default_color_secondary_variant"
+            android:onClick="nextPage"
+            android:textSize="9sp"
+            android:text="Registrar" />
 
-                <TextView
-                    android:id="@+id/nuevoUsuario"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/btnInicio"
-                    android:layout_marginTop="20dp"
-                    android:text="¿Eres nuevo? Regístrate"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="italic" />
+        <TextView
+            android:id="@+id/olvidastePass"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nuevoUsuario"
+            android:layout_marginTop="30dp"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:text="¿Olvidaste tu contraseña?"/>
 
-                <Button
-                    android:id="@+id/inicioSesion1"
-                    android:layout_width="103dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/btnInicio"
-                    android:layout_toRightOf="@+id/nuevoUsuario"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginBottom="12dp"
-                    android:backgroundTint="@color/design_default_color_secondary_variant"
-                    android:onClick="nextPage"
-                    android:textSize="9sp"
-                    android:text="Registrar" />
-
-                <TextView
-                    android:id="@+id/olvidastePass"
-                    android:layout_width="220dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/nuevoUsuario"
-                    android:layout_marginTop="30dp"
-                    android:textSize="18sp"
-                    android:textStyle="italic"
-                    android:textColor="@color/black"
-                    android:text="¿Olvidaste tu contraseña?"/>
-
-                <Button
-                    android:id="@+id/btnRecuperar"
-                    android:layout_width="103dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/nuevoUsuario"
-                    android:layout_toRightOf="@+id/olvidastePass"
-                    android:text="Recuperar"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginLeft="13dp"
-                    android:layout_marginBottom="12dp"
-                    android:textSize="9sp"
-                    android:backgroundTint="@color/design_default_color_secondary_variant"
-                    android:onClick="nextPageRes"/>
+        <Button
+            android:id="@+id/btnRecuperar"
+            android:layout_width="103dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nuevoUsuario"
+            android:layout_toRightOf="@+id/olvidastePass"
+            android:text="Recuperar"
+            android:layout_marginTop="14dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginBottom="12dp"
+            android:textSize="9sp"
+            android:backgroundTint="@color/design_default_color_secondary_variant"
+            android:onClick="nextPageRes"/>
 
     </RelativeLayout>
 

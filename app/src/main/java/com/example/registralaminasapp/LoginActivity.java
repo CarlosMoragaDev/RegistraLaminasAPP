@@ -2,6 +2,7 @@ package com.example.registralaminasapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -17,9 +18,9 @@ import java.util.concurrent.Executor;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText emailUser;
-    private EditText passUser;
-    private Button btnInicio;
+    private EditText username, password;
+    private Button btnsignin;
+    DBHelper DB;
     private Button btnHuella;
 
 
@@ -28,23 +29,31 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
 
-
-        emailUser = (EditText) findViewById(R.id.emailUser);
-        passUser = (EditText) findViewById(R.id.passUser);
-        btnInicio = (Button) findViewById(R.id.btnInicio);
+        username = (EditText) findViewById(R.id.username);
+        password = (EditText) findViewById(R.id.password);
+        btnsignin = (Button) findViewById(R.id.btnsignin);
+        DB = new DBHelper(this);
         btnHuella = (Button) findViewById(R.id.btnHuella);
 
-        btnInicio.setOnClickListener(new View.OnClickListener() {
+        btnsignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!emailUser.getText().toString().isEmpty() && !passUser.getText().toString().isEmpty()){
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.putExtra("nombre", emailUser.getText().toString());
-                    startActivity(intent);
 
-                }
+                String user=username.getText().toString();
+                String pass=password.getText().toString();
+
+                if(TextUtils.isEmpty(user) || TextUtils.isEmpty(pass))
+                    Toast.makeText(LoginActivity.this,"LLenar todos los campos", Toast.LENGTH_SHORT).show();
                 else{
-                    Toast.makeText(LoginActivity.this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
+                    Boolean checkusepass= DB.checkusernamepassword(user,pass);
+                    if(checkusepass==true){
+                        Toast.makeText(LoginActivity.this, "Inicio de sesion exitoso", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.putExtra("nombre", username.getText().toString());
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(LoginActivity.this, "Error al iniciar sesion", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -76,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
         toast.show();
     }
 
-    //para ir a home agregando nombre de usuario
+    /*para ir a home agregando nombre de usuario
     public void nextPage2(View vista1){
         String mensaje = "Bienvenido";
         Toast toast = Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT);
@@ -85,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Intent nextPage = new Intent(this, MainActivity.class);
         startActivity(nextPage);
-    }
+    }*/
 
     //recursos para ingreso biometrico
     private BiometricPrompt getPrompt()
@@ -102,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                intent.putExtra("nombre", emailUser.getText().toString());
+                intent.putExtra("nombre", username.getText().toString());
                 startActivity(intent);
             }
 
