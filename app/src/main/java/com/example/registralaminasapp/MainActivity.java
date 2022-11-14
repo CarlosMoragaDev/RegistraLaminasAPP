@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void UnSegundo(){
         try{
-            Thread.sleep(1000);
+            Thread.sleep(200);
         }catch (InterruptedException e){}
     }
     @Override
@@ -101,12 +101,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             progressBarProceso.setProgress(values[0].intValue());
         }
         @Override
-        protected void onPostExecute(Boolean resultado) {
-            //super.onPostExecute(aVoid);
-            if(resultado){
-                Toast.makeText(getBaseContext(),
-                        "Creacion de Album Finalizada en AsyncTask", Toast.LENGTH_LONG).show();
-            }
+        protected void onPostExecute(Boolean aVoid) {
+            super.onPostExecute(aVoid);
+            Toast.makeText(getBaseContext(),"Creacion de Album Finalizada en AsyncTask", Toast.LENGTH_LONG).show();
+            Intent nextPage = new Intent(MainActivity.this, AlbumActivity.class);
+            startActivity(nextPage);
         }
         @Override
         protected void onCancelled() {

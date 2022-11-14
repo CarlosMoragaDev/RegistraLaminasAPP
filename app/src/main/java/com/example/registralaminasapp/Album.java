@@ -2,32 +2,47 @@ package com.example.registralaminasapp;
 
 public class Album{
 
-    private int portada;
-    private String lNormales;
-    private String lEspeciales;
+    private int id;
+    private String nombre;
+    private String normales;
+    private String especiales;
 
-    private String btnDetail;
-
-    public Album(int portada, String lNormales, String lEspeciales, String btnDetail) {
-        this.portada = portada;
-        this.lNormales = lNormales;
-        this.lEspeciales = lEspeciales;
-        this.btnDetail = btnDetail;
+    public Album(int id, String nombre, String normales, String especiales) {
+        this.id = id;
+        this.nombre = nombre;
+        this.normales = normales;
+        this.especiales = especiales;
     }
 
-    public int getPortada() {
-        return portada;
+    public int getId() {
+        return id;
     }
 
-    public String getlNormales() {
-        return lNormales;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getlEspeciales() {
-        return lEspeciales;
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getBtnDetail() {
-        return btnDetail;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNormales() {
+        return normales;
+    }
+
+    public void setNormales(String normales) {
+        this.normales = normales;
+    }
+
+    public String getEspeciales() {
+        return especiales;
+    }
+
+    public void setEspeciales(String especiales) {
+        this.especiales = especiales;
     }
 }
